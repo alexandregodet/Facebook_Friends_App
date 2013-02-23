@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>FB Friend App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apprenez-en plus sur vos amis FB">
+    <meta name="author" content="Alexandre GODET">
+
+    <!-- Le styles -->
+    <link href="stylesheets/bootstrap.css" rel="stylesheet"/>
+    <link href="stylesheets/bootstrap-responsive.css" rel="stylesheet"/>
+    <link href="stylesheets/style.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+
+    <div class="container">
+        <div class="app row">
+            <div class="span12">
+                <h2 class="app-heading">Fb Friends App</h2>
+                <div class="span12 app-toolbar btn-group">
+                    <button class="btn" id="byName">Sort by name</button>
+                    <button class="btn" id="byBirthday">Sort by birthday</button>
+                    <input id="filter" type="text" name="filter" placeholder="Filtrer par nom" autofocus="autofocus" />
+                    <button class="btn" id="removeSearch"><i class="icon-remove"></i></button>				
+                    <div class="friendsCount">
+                        <span class="btn btn-success">
+                            <span class="nbFriends">0</span> friend(s)
+                        </span>
+                    </div>
+                </div>
+                <div class="span12" style="margin-left:-20px;">
+                    <hr>
+                    <div id="statsTitle">
+                        <h3>Statistiques</h3>
+                        <i>Lancez une recherche pour créer les stats</i>
+                    </div>
+                    <div id="graphSexe" class="span4"></div>
+                    <div id="graphAge" class="span4"></div>
+                    <div id="graphStatus" class="span4"></div>
+                    <div id="graphDevice" class="span4"></div>
+                    <div id="tableDevice" class="span4"></div>
+                    <div id="graphNation" class="span4"></div>
+                </div>
+                <div class="friend-list row"></div>
+            </div>
+        </div>
+    </div>
+
+      
+    <script src="javascripts/jquery-1.9.0.js"></script>
+    <script src="javascripts/bootstrap.2.2.2.js"></script>
+    <script src="javascripts/lodash.1.0.0.rc-3.js"></script>
+    <script src="javascripts/backbone.0.9.2.js"></script>    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+    <script id="friendTmpl" type="application/x-template">
+      <div class="media">
+        <a class="pull-left">
+          <a href="<%= profile_url %>" class="img_profil" target="_blank">
+              <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="<%= pic_big %>">
+          </a>
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading"><a href="<%= profile_url %>" target="_blank"><%= sort_first_name %> <%= sort_last_name %></a></h4>
+          <table>
+              <tr>
+                  <td><img src="images/fb_like_btn.jpg" width="18" alt="Nb like" /> <%= likes_count != null ? likes_count : '?' %></td>
+                  <td><img src="images/fb_friends_img.png" width="18" alt="Nb friends" /> <%= friend_count != null ? friend_count : '?' %></td>
+              </tr>
+              <tr>
+                  <td><img src="images/fb_birthday_img.png" width="18" alt="Birthday date" /><%= (birthday_date != null && birthday_date.length>5) ? birthday_date : '?' %></td>
+                  <td><img src="images/fb_love.png" width="18" alt="Birthday date" /><%= relationship_status ? relationship_status : '?' %></td>
+              </tr>
+              <tr>
+                  <td colspan="2"><img src="images/fb_home.png" width="18" alt="Birthday date" /><%= hometown_location!=null ?  hometown_location.city+','+hometown_location.state : '?' %></td>
+              </tr>
+          </table>
+          
+        </div>
+      </div>
+    </script>
+    
+    
+    <script src="javascripts/views.js"></script>
+    <script src="javascripts/models.js"></script>
+    <script src="javascripts/collections.js"></script>
+    <script src="javascripts/appli.js"></script>
+    
+  </body>
+</html>
