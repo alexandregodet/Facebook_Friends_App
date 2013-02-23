@@ -1,7 +1,0 @@
-Sur linux : 
-- Ne pas utiliser apt-get install node !
-- DL nodjs depuis le site offi
-- extraire les fichiers et copier le lien vers le dossier /bin
-- placer le friends.js à la racine (avec app.js)
-- en ligne de commande, faire un export PATH="lienVersDossierBin"
-- puis se placer dans le repetoire du projet et faire "node app.js"
